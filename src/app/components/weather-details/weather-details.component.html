@@ -1,0 +1,36 @@
+<mat-toolbar color="primary">
+    <button mat-button (click)=back()>
+        <mat-icon>arrow_back</mat-icon>
+    </button>
+    <span>Weather Details</span>
+</mat-toolbar>
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>{{location.name}}</mat-card-title>
+        <mat-card-subtitle>{{location.country}}</mat-card-subtitle>
+        <div>
+            <button mat-icon-button (click)="refresh()">
+                <mat-icon>refresh</mat-icon>
+            </button>
+        </div>
+    </mat-card-header>
+    <mat-card-content>
+            <span class="texto-mini">
+                <span class="color-max" *ngIf="info.temp_max">{{info.temp_max}} ºC</span>
+                <span class="color-min"  *ngIf="info.temp_min">{{info.temp_min}} ºC</span>
+            </span>
+            <span>{{info?.temp}}ºC</span>
+            <img [src]="'http://openweathermap.org/img/w/' + info?.icon + '.png'">                 
+    </mat-card-content>
+    <mat-card-actions>
+        <span class="texto-detalles"  *ngIf="info.desc">{{info.desc}}</span>
+        <span class="texto-detalles"  *ngIf="info.clouds"> CLOUDS: {{info.clouds}} %</span>
+        <span class="texto-detalles"  *ngIf="info.humidity"> HUMIDITY: {{info.humidity}} %</span>
+        <span class="texto-detalles"  *ngIf="info.pressure"> PRESSURE: {{info.pressure}} hPa</span>
+        <span class="texto-detalles"  *ngIf="info.wind"> WIND: {{info.wind}} km/h</span>
+        <span class="texto-detalles"  *ngIf="info.rain"> RAIN: {{info.rain}} </span>
+        <span class="texto-detalles" *ngIf="info.snow" > SNOW: {{info.snow}} </span>
+    </mat-card-actions>
+
+</mat-card>
