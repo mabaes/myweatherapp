@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
+import { Location, DatePipe } from '@angular/common';
 import {ActivatedRoute} from '@angular/router';
 import { StoreService } from '../../services/store.service';
 import { WeatherLocation } from '../../models/weather-location';
@@ -16,15 +16,39 @@ export class ForecastComponent implements OnInit {
   private location: WeatherLocation;
   private info: WeatherInfo;
   private milisegundos:number;
+  private milisegundos_fin:number;
   private forecast: WeatherInfo[];
+  private contador:number =0;
   constructor( private route:ActivatedRoute,
     private locationService: Location,
     private weatherInfoService: WeatherInfoService,
     private store: StoreService
     
     ) { }
-
-  ngOnInit() {
+    ngOnInit() {
+      let id: number = Number(this.route.snapshot.paramMap.get('id'));
+      this.location = this.store.findLocation(id);
+      
+      this.weatherInfoService.findCurrentWeather(this.location, (err, info) => {
+        this.info = info;                 
+        let milisec_start:number = this.info.ts;
+        let milisec_end : number = 86400000; //total milisegundos en un dia
+        
+        this.milisegundos = milisec_end;
+        console.log(milisec_start);  
+        for (let i = 0; i < 6; i++) {
+          this.weatherInfoService.findForecast(this.location,milisec_start, milisec_end, (err, forecast) => {
+          this.forecast= forecast;
+          } );
+          this.contador ++; 
+        }
+      }); //end findcurrentWeather
+      
+      
+     
+    } //ngOnInit
+/*
+    ngOnInit() {
     console.log(this.route.snapshot.paramMap.get('id'));
     let id:number = Number(this.route.snapshot.paramMap.get('id'));
     this.location = this.store.findLocation(id);   
@@ -46,6 +70,7 @@ export class ForecastComponent implements OnInit {
     
     
   }
+  */
   back() {
     console.log('[SearchLocationComponent] back()');
     this.locationService.back();

@@ -11,4 +11,5 @@ export interface WeatherInfo {
     wind?: number; // velocidad viento
     rain?: number; // volumen de lluvia
     snow?: number; // volumen de nieve
+    dt_txt?:string //formato fecha
 }

@@ -1,4 +1,4 @@
-//// find location
+//// find location 
 {
     "coord": {
         "lon": -0.13,
@@ -85,3 +85,15 @@
     "name": "London",
     "cod": 200
 }
+
+
+      ts: Date.now(),
+      desc: info.weather.description,//'scattered clouds',
+      icon: info.weather.icon,
+      temp: info.main.temp, //main.temp
+      temp_max: info.main.temp_max, // main.temp_max
+      temp_min: info.main.temp_min, // main.temp_min
+      clouds: clouds.all,
+      humidity:  main.humidity,
+      pressure:  main.pressure,
+      wind: wind.speed

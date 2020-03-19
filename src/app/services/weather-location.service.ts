@@ -36,7 +36,6 @@ export class WeatherLocationService {
       .subscribe(
         (info) => {
           console.log('[WeatherLocationService] findLocation() success.');
-          console.log(info);
           if (info) {
             cb(null, [{
               id: info.id,

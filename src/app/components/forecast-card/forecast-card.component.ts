@@ -8,10 +8,15 @@ import { WeatherInfo } from '../../models/weather-info';
 })
 export class ForecastCardComponent implements OnInit {
   @Input()
-  forecast: WeatherInfo[];
+  item_forecast: WeatherInfo;
   constructor() { }
 
   ngOnInit() {
+    console.log('Forecast-card');
+    console.log(this.item_forecast.ts);
+    
+    var s = new Date(this.item_forecast.ts).toLocaleTimeString("en-EN");
+    console.log(s);
   }
 
 }

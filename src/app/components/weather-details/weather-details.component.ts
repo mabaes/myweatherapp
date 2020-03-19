@@ -13,13 +13,16 @@ import { WeatherInfo } from '../../models/weather-info';
 })
 export class WeatherDetailsComponent implements OnInit {
 
-  private location: WeatherLocation;
-  private info: WeatherInfo;
+  
+  
   constructor(private locationService: Location,
       private route:ActivatedRoute,
       private weatherInfoService: WeatherInfoService,
       private store: StoreService
     ) { }
+  
+  private location: WeatherLocation;  
+  private info: WeatherInfo;
   back() {
     console.log('[SearchLocationComponent] back()');
     this.locationService.back();
@@ -40,8 +43,7 @@ export class WeatherDetailsComponent implements OnInit {
     //console.log(this.store.findLocation(id));
     this.weatherInfoService.findCurrentWeather(this.location,(err, info) => {
       this.info = info;
-    });
-    console.log('resultado:');    
+    });      
   }
 
 }

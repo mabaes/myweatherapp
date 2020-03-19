@@ -4,8 +4,9 @@
     </button>
     <span>Forecast</span>
 </mat-toolbar>
-<!--<app-forecast-card [forecast]="forecast" 
-    *ngFor="let forecast of storeService.listLocations()">
-</app-forecast-card>-->
-<p>{{ milisegundos | date:'shortTime' }}</p>
+<!-- weatherInfoService-->
+<app-forecast-card  [item_forecast]="item_forecast" *ngFor="let item_forecast of forecast">
+</app-forecast-card>
+<p>{{ milisegundos | date:'shortTime' }} HOLA</p>
 <p>{{milisegundos | date:'longDate'}}</p>
+

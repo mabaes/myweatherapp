@@ -13,6 +13,8 @@ export class DashboardComponent implements OnInit {
   constructor(private router: Router,private storeService: StoreService) { }
 
   ngOnInit() {
+    console.log('datos iniciales:');
+    console.log(this.storeService.listLocations());
   }
 
   addLocation() {

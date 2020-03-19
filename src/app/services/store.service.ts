@@ -8,10 +8,10 @@ export class StoreService {
   private locations: WeatherLocation[] = [];
   constructor() {
     this.locations.push({
-      id: 100,
+      id: 2643743,
       lat: 38.71,
       lon: -0.47,
-      name: 'Alcoy',
+      name: 'AlcoyX',
       country: 'ES'
     });
   }
