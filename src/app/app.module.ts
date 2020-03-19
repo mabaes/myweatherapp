@@ -19,6 +19,8 @@ import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatListModule} from '@angular/material/list';
+import { ForecastCardComponent } from './components/forecast-card/forecast-card.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import {MatListModule} from '@angular/material/list';
     SearchLocationComponent,
     WeatherDetailsComponent,
     ForecastComponent,
-    WeatherCardComponent
+    WeatherCardComponent,
+    ForecastCardComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +51,8 @@ import {MatListModule} from '@angular/material/list';
       FormsModule,
       MatFormFieldModule,
       MatInputModule,
-      MatListModule
+      MatListModule,
+      HttpClientModule
 
   ],
   providers: [],

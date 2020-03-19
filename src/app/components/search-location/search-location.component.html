@@ -12,7 +12,8 @@
         </button>
     </mat-form-field>
 </div>
-<mat-list>
+<h4 *ngIf="encontrado!=undefined && !encontrado">Lo sentimos pero no hemos encotrado la ciudad indicada. Verifique que está correctamente escrita</h4>
+<mat-list *ngIf="encontrado">
     <mat-list-item *ngFor="let location of locations">
         <h4 matLine>{{location.name}}</h4>
         <button mat-icon-button>

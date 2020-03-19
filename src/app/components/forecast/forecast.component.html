@@ -1,1 +1,11 @@
-<p>forecast works!</p>
+<mat-toolbar color="primary">
+    <button mat-button (click)=back()>
+        <mat-icon>arrow_back</mat-icon>
+    </button>
+    <span>Forecast</span>
+</mat-toolbar>
+<!--<app-forecast-card [forecast]="forecast" 
+    *ngFor="let forecast of storeService.listLocations()">
+</app-forecast-card>-->
+<p>{{ milisegundos | date:'shortTime' }}</p>
+<p>{{milisegundos | date:'longDate'}}</p>
