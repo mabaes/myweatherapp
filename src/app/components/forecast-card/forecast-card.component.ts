@@ -7,16 +7,21 @@ import { WeatherInfo } from '../../models/weather-info';
   styleUrls: ['./forecast-card.component.css']
 })
 export class ForecastCardComponent implements OnInit {
-  @Input()
-  item_forecast: WeatherInfo;
+  @Input()  item_forecast: WeatherInfo[];
+  //@Input() age:string;
+  //@Input() dia:string;
   constructor() { }
 
   ngOnInit() {
-    console.log('Forecast-card');
-    console.log(this.item_forecast.ts);
+    console.log('Forecast-card:');
+    console.log(this.item_forecast);
+   /*
+    if(this.item_forecast) {
+     console.log('item forecast init');
+   }*/
     
-    var s = new Date(this.item_forecast.ts).toLocaleTimeString("en-EN");
-    console.log(s);
+    //var s = new Date(this.item_forecast.ts).toLocaleTimeString("en-EN");
+    //console.log(s);
   }
 
 }

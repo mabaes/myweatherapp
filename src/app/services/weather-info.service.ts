@@ -3,6 +3,12 @@ import { WeatherLocation } from '../models/weather-location';
 import { WeatherInfo } from '../models/weather-info';
 import { HttpClient } from '@angular/common/http';
 
+// RxJS v6+
+import { from } from 'rxjs';
+import { groupBy, mergeMap, toArray } from 'rxjs/operators';
+import { DatePipe } from '@angular/common';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +20,7 @@ export class WeatherInfoService {
   private url = `http://api.openweathermap.org/data/2.5/weather`;
   private url_forecast =`http://api.openweathermap.org/data/2.5/forecast`;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, public datepipe: DatePipe) { }
   findCurrentWeather(location: WeatherLocation,
     cb: (err: Error, info: WeatherInfo) => void): void {
     console.log(`findCurrentWeather(${location.name})`);
@@ -39,6 +45,7 @@ export class WeatherInfoService {
               wind: resul.wind.speed,
               dt_txt:resul.dt_txt
             }
+            
             cb(null,info);
           } else {
             cb(null, null);
@@ -129,8 +136,9 @@ export class WeatherInfoService {
           console.log(resul);
           if (resul) {
             let forecast: WeatherInfo[] = [];
+            
             for (let item of resul.list) {
-              
+              let fecha = item.dt_txt.transform
               let info = {
                 ts: item.dt,
                 desc: item.weather[0].description,//'scattered clouds',
@@ -144,12 +152,30 @@ export class WeatherInfoService {
                 wind: item.wind.speed,
                 dt_txt:item.dt_txt
               }
-              
-              forecast.push(info);
-              
+              forecast.push(info);              
             }
-            console.log('fin listado:');
-            console.log(forecast);
+                          //////////////////////////////
+              //emit each person
+              /*
+const source = from(forecast);
+//group by date
+const example = source.pipe(
+  groupBy(forecast => this.datepipe.transform(forecast.dt_txt, 'dd/MM/yyyy') ),
+  // return each item in group as array
+  mergeMap(group => group.pipe(toArray()))
+);
+console.log('SUSCRIBIR:');
+const subscribe = example.subscribe(val => console.log(val));
+console.log(subscribe);
+*/
+              ///////////////////////////////
+
+
+
+
+
+            //console.log('fin listado:');
+            //console.log(forecast);
           
             cb(null,forecast);
           } else {

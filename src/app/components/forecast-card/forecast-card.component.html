@@ -1,13 +1,11 @@
 <mat-card>
     <mat-card-header> <!--let item_forecast_data of item_forecast  -->
-        <mat-card-title>{{item_forecast.dt_txt}}</mat-card-title>
-        <mat-card-subtitle>{{item_forecast.dt_txt| date:'shortTime'}}</mat-card-subtitle>
-       
+        <mat-card-title>{{item_forecast[0].dt_txt | date:'longDate'}}</mat-card-title>        
     </mat-card-header>   
-    <mat-card-content>
-        <span>{{item_forecast.ts | date:'shortTime':'UTC+0'}} ##{{item_forecast.ts }}##</span>
-        <span>{{item_forecast.temp}} ºC</span>
-        <span><img [src]="'http://openweathermap.org/img/w/' + item_forecast?.icon + '.png'"></span>
+    <mat-card-content *ngFor="let item_dia of item_forecast">
+        <span class="item_forecast">{{item_dia.dt_txt | date:'shortTime':'UTC+0'}} </span>
+        <span class="item_forecast">{{item_dia.temp}} ºC</span>
+        <span class="item_forecast"><img [src]="'http://openweathermap.org/img/w/' + item_dia?.icon + '.png'"></span>
     </mat-card-content>    
 </mat-card>
 

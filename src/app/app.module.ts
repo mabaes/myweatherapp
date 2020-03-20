@@ -21,6 +21,7 @@ import { MatInputModule } from '@angular/material/input';
 import {MatListModule} from '@angular/material/list';
 import { ForecastCardComponent } from './components/forecast-card/forecast-card.component';
 import { HttpClientModule } from '@angular/common/http';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,7 @@ import { HttpClientModule } from '@angular/common/http';
       HttpClientModule
 
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
