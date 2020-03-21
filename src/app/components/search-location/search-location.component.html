@@ -12,6 +12,7 @@
         </button>
     </mat-form-field>
 </div>
+<span class="loading" *ngIf="loading"><img [src]="'../../../assets/loading.gif'"  width="80px"></span>
 <h4 *ngIf="encontrado!=undefined && !encontrado">Lo sentimos pero no hemos encotrado la ciudad indicada. Verifique que está correctamente escrita</h4>
 <mat-list *ngIf="encontrado">
     <mat-list-item *ngFor="let location of locations">

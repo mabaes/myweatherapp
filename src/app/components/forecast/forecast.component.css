@@ -3,3 +3,8 @@
     flexbox row layout. */
     flex: 1 1 auto;
 }
+.loading {
+    padding-top: 20px;
+    display: block;
+    text-align: center;
+}

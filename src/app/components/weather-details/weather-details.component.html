@@ -16,6 +16,7 @@
         </div>
     </mat-card-header>
     <mat-card-content>
+            <span class="loading" *ngIf="info==undefined"><img [src]="'../../../assets/loading.gif'"  width="80px"></span>
             <span class="texto-mini">
                 <span class="color-max"  *ngIf="info!=undefined && info.temp_max">{{info.temp_max}} ºC</span>
                 <span class="color-min" *ngIf="info!=undefined && info.temp_min">{{info.temp_min}} ºC</span>

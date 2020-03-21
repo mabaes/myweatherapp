@@ -14,6 +14,7 @@ export class SearchLocationComponent implements OnInit {
   private city: string;
   private locations: WeatherLocation[];
   private encontrado : boolean;
+  private loading:boolean = false;  
   constructor(private locationService: Location,
     private weatherLocationService: WeatherLocationService,
     private store: StoreService) { }
@@ -24,7 +25,9 @@ export class SearchLocationComponent implements OnInit {
 
   search() {
     console.log('[SearchLocationComponent] search()');
+    this.loading = true;
     this.weatherLocationService.findLocation(this.city, (err, locations) => {
+      this.loading = false;
       if (err) {
         console.log('ERROR');
         this.encontrado=false;
