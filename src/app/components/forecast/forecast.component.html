@@ -4,23 +4,13 @@
     </button>
     <span>Forecast</span>
 </mat-toolbar>
-<!-- weatherInfoService-->
-<!--<app-forecast-card  [item_forecast]="item_forecast" *ngFor="let item_forecast of forecast">
-</app-forecast-card>-->
 <span class="loading" *ngIf="forecast_groupby==undefined"><img [src]="'../../../assets/loading.gif'"  width="80px"></span>
 <div *ngIf="forecast_groupby">
     <div *ngFor="let item_dias of forecast_groupby ; let i = index"> 
         <app-forecast-card  [item_forecast]="item_dias" >
         </app-forecast-card>
     </div>
-   <!-- <app-forecast-card  [item_forecast]="forecast"  *ngFor="let item_dia of subscribe"></app-forecast-card>-->
 </div>
 <div *ngIf="forecast">
-    <!--<app-forecast-card  [item_forecast]="forecast"  *ngFor="let number of [0,1,2,3,4]">-->
-        
-    <!--<app-forecast-card  [item_forecast]="forecast"  *ngFor="let item_dia of subscribe"></app-forecast-card>
-    </app-forecast-card>-->
-    </div>
-<p>{{ milisegundos | date:'shortTime' }} HOLA</p>
-<p>{{milisegundos | date:'longDate'}}</p>
+</div>
 

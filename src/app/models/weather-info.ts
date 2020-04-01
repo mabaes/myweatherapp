@@ -12,4 +12,5 @@ export interface WeatherInfo {
     rain?: number; // volumen de lluvia
     snow?: number; // volumen de nieve
     dt_txt?:string //formato fecha
+    name?:string //nombre de la localidad
 }

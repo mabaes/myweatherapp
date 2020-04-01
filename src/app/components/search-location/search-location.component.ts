@@ -15,6 +15,7 @@ export class SearchLocationComponent implements OnInit {
   private locations: WeatherLocation[];
   private encontrado : boolean;
   private loading:boolean = false;  
+  private msg:string='';
   constructor(private locationService: Location,
     private weatherLocationService: WeatherLocationService,
     private store: StoreService) { }
@@ -31,6 +32,7 @@ export class SearchLocationComponent implements OnInit {
       if (err) {
         console.log('ERROR');
         this.encontrado=false;
+        this.msg="Lo sentimos pero no hemos encotrado la ciudad indicada. Verifique que está correctamente escrita";
 
       }
       else {
@@ -41,8 +43,14 @@ export class SearchLocationComponent implements OnInit {
   }
   addLocation(location: WeatherLocation) {
     console.log(`[SearchLocationComponent] addLocation(${location.name})`);
-    this.store.addLocation(location);
-    this.locationService.back();
+    let resultado = this.store.addLocation(location);
+    console.log(`Resultado de Add ${resultado}`);
+    if (resultado) {
+      this.locationService.back();
+    } else {
+      this.encontrado = false;
+      this.msg ="La ciudad que ha buscado ya estaba en su lista de favoritos.";
+    }
   }  
 
   ngOnInit() {

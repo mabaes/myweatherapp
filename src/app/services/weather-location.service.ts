@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { WeatherLocation } from '../models/weather-location';
 import { HttpClient } from '@angular/common/http';
+import { WeatherInfo } from '../models/weather-info';
 //import { ConsoleReporter } from 'jasmine';
 
 @Injectable({
@@ -9,23 +10,8 @@ import { HttpClient } from '@angular/common/http';
 
 export class WeatherLocationService {
   private key = '7817cbbbb878b080139dd13e07402d21';
-  private url = `http://api.openweathermap.org/data/2.5/weather`;
-  constructor(private http: HttpClient) { }
-  /* INICIAL lo sustituimos por llamada a la api*/
-  /*
-  findLocation(desc: string,
-    cb: (err: Error, locations: WeatherLocation[]) => void): void {
-    console.log(`[WeatherLocationService] findLocation(${desc}`);
-    let location = {
-      id: 100,
-      lat: 38.71,
-      lon: -0.47,
-      name: 'Alcoy',
-      country: 'ES'
-    };
-    cb(null, [location]);
-  }
-  */
+  private url = `http://api.openweathermap.org/data/2.5/weather`;  
+  constructor(private http: HttpClient) { } 
 
   findLocation(desc: string,
     cb: (err: Error, locations: WeatherLocation[]) => void): void {
@@ -55,6 +41,43 @@ export class WeatherLocationService {
       );
   }
 
+  //// nuevo  encontrar localizacion los lon / lat/////
+  findByLongLat(longi: string, lati:string,
+    cb: (err: Error, info: WeatherInfo) => void): void {
+    console.log(`[WeatherLocationService] findByLongLat(${longi})(${lati})`);
+    this.http.get<any>(this.url, {
+      params: { APPID: this.key, lat:lati.toString(), lon: longi.toString(),units: 'metric'   }
+    })
+      .subscribe(
+        (info) => {
+          console.log('[WeatherLocationService] findByLongLat() success. ');
+          console.log(info);
+          if (info) {
+            cb(null, {
+              ts: Date.now(),
+              desc: info.weather[0].description,//'scattered clouds',
+              icon: info.weather[0].icon,
+              temp: info.main.temp, 
+              temp_max: info.main.temp_max, 
+              temp_min: info.main.temp_min, 
+              clouds: info.clouds.all,
+              humidity: info.main.humidity,
+              pressure: info.main.pressure,
+              wind: info.wind.speed,
+              dt_txt: info.dt_txt,
+              name:info.name
+
+            });
+          } else {
+            cb(null, null);
+          }
+        },
+        (err) => {
+          console.log(err);
+          cb(err, null);
+        }
+      );
+  }
     
 }
   

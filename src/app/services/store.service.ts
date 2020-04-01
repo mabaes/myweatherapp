@@ -7,22 +7,23 @@ import { WeatherLocation } from '../models/weather-location';
 export class StoreService {
   private locations: WeatherLocation[] = [];
   constructor() {
-    /*
-    this.locations.push({
-      id: 2643743,
-      lat: 38.71,
-      lon: -0.47,
-      name: 'AlcoyX',
-      country: 'ES'
-    });
-    */
+    
    if (localStorage.getItem('locations'))
     this.locations = JSON.parse(localStorage.getItem('locations'));
   }
-  addLocation(location: WeatherLocation): void {
+  addLocation(location: WeatherLocation): boolean {
     console.log(`[StoreService] addLocation(${location.name}`);
-    this.locations.push(location);
-    localStorage.setItem('locations', JSON.stringify(this.locations));
+    let id_location = location.id;
+    let index = this.locations.findIndex((location => location.id === id_location));
+    let addlocation : boolean = false;
+    console.log(`REsultado de buscar si esta la cieudad ${index}`);
+    if (index == -1) {
+      console.log('add la ciudad');
+      this.locations.push(location);
+      localStorage.setItem('locations', JSON.stringify(this.locations));
+      addlocation = true;
+    }
+    return addlocation;
   }
   removeLocation(id: number): void {
     console.log(`[StoreService] removeLocation(${id})`);

@@ -1,0 +1,28 @@
+.mat-toolbar {
+  z-index: 300;
+}
+.map-container {
+    position: absolute;
+    top: 52px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 5px;
+    /*z-index: -100;*/
+  }
+  
+  .map-frame {
+    border: 1px solid #666;
+    height: 100%;
+  }
+  
+  #map {
+    height: 100%;
+  }
+  .leaflet-popup-content{
+    display:grid !important;
+  }
+  .peque {
+    font-size: 14px;
+    padding-left: 10px;
+  }

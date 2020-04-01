@@ -22,6 +22,7 @@ import {MatListModule} from '@angular/material/list';
 import { ForecastCardComponent } from './components/forecast-card/forecast-card.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
+import { MapComponent } from './components/map/map.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { DatePipe } from '@angular/common';
     WeatherDetailsComponent,
     ForecastComponent,
     WeatherCardComponent,
-    ForecastCardComponent
+    ForecastCardComponent,
+    MapComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,6 +45,7 @@ import { DatePipe } from '@angular/common';
         { path: 'search', component: SearchLocationComponent },
         { path: 'details/:id', component: WeatherDetailsComponent },
         { path: 'forecast/:id', component: ForecastComponent },
+        { path: 'map', component: MapComponent },
         { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
       ]),
       MatToolbarModule,

@@ -13,7 +13,7 @@
     </mat-form-field>
 </div>
 <span class="loading" *ngIf="loading"><img [src]="'../../../assets/loading.gif'"  width="80px"></span>
-<h4 *ngIf="encontrado!=undefined && !encontrado">Lo sentimos pero no hemos encotrado la ciudad indicada. Verifique que está correctamente escrita</h4>
+<h4 id="mensaje" *ngIf="encontrado!=undefined && !encontrado">{{ msg}}</h4>
 <mat-list *ngIf="encontrado">
     <mat-list-item *ngFor="let location of locations">
         <h4 matLine>{{location.name}}</h4>

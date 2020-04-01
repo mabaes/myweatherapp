@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { StoreService } from '../../services/store.service';
 import { WeatherLocation } from '../../models/weather-location';
 
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -10,11 +11,13 @@ import { WeatherLocation } from '../../models/weather-location';
 })
 export class DashboardComponent implements OnInit {
 
+  public listalocations: WeatherLocation[]=[];
   constructor(private router: Router,private storeService: StoreService) { }
 
   ngOnInit() {
-    console.log('datos iniciales:');
-    console.log(this.storeService.listLocations());
+    this.listalocations = this.storeService.listLocations();
+    //console.log( this.listalocations);
+    
   }
 
   addLocation() {
@@ -25,6 +28,11 @@ export class DashboardComponent implements OnInit {
   removeLocation(location: WeatherLocation) {
     console.log(`[DashboardComponent] removeLocation(${location.name})`);
     this.storeService.removeLocation(location.id);
+  }
+
+  irMapa(){
+    console.log('click map')
+    this.router.navigateByUrl('/map');
   }
 
   

@@ -2,10 +2,18 @@
     <span class="example-fill-remaining-space"></span>
     <span>My Weather</span>
     <span class="example-fill-remaining-space"></span>
+    <button mat-button (click)="irMapa()">
+        <mat-icon>place</mat-icon>
+    </button>
     <button mat-button (click)="addLocation()">
         <mat-icon>add</mat-icon>
     </button>
 </mat-toolbar>
+<div *ngIf="listalocations; else Nolista">
 <app-weather-card [location]="location" (removed)="removeLocation($event)"
-    *ngFor="let location of storeService.listLocations()">
+    *ngFor="let location of listalocations"> 
 </app-weather-card>
+</div>
+<ng-template #Nolista>
+   Fallo de conexión . Vuelve a cargar por favor
+</ng-template>
