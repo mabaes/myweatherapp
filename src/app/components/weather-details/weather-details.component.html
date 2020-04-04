@@ -15,14 +15,17 @@
             </button>
         </div>
     </mat-card-header>
-    <mat-card-content>
-            <span class="loading" *ngIf="info==undefined"><img [src]="'../../../assets/loading.gif'"  width="80px"></span>
-            <span class="texto-mini">
-                <span class="color-max"  *ngIf="info!=undefined && info.temp_max">{{info.temp_max}} ºC</span>
-                <span class="color-min" *ngIf="info!=undefined && info.temp_min">{{info.temp_min}} ºC</span>
-            </span>
-            <span>{{info?.temp}}ºC</span>
-            <img [src]="'http://openweathermap.org/img/w/' + info?.icon + '.png'">                 
+    <div class="loading">
+        <mat-progress-spinner mode="indeterminate" *ngIf="info==undefined">
+        </mat-progress-spinner>
+    </div>
+    <mat-card-content style="text-align:center">
+                <span class="texto-mini">
+                    <span class="color-max"  *ngIf="info!=undefined && info.temp_max">{{info.temp_max}} ºC</span>
+                    <span class="color-min" *ngIf="info!=undefined && info.temp_min">{{info.temp_min}} ºC</span>
+                </span>
+                <span>{{info?.temp}}ºC</span>
+                <img [src]="'http://openweathermap.org/img/w/' + info?.icon + '.png'">                           
     </mat-card-content>
     <mat-card-actions>
         <span class="texto-detalles"  *ngIf="info!=undefined && info.desc">{{info.desc}}</span>
@@ -31,7 +34,7 @@
         <span class="texto-detalles"  *ngIf="info!=undefined && info.pressure"> PRESSURE: {{info.pressure}} hPa</span>
         <span class="texto-detalles"  *ngIf="info!=undefined && info.wind"> WIND: {{info.wind}} km/h</span>
         <span class="texto-detalles"  *ngIf="info!=undefined && info.rain"> RAIN: {{info.rain}} </span>
-        <span class="texto-detalles" *ngIf="info!=undefined && info.snow" > SNOW: {{info.snow}} </span>
+        <span class="texto-detalles" *ngIf="info!=undefined && info.snow" > SNOW: {{info.snow}} </span>        
     </mat-card-actions>
 
 </mat-card>

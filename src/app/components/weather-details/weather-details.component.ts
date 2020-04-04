@@ -29,7 +29,8 @@ export class WeatherDetailsComponent implements OnInit {
   }
 
   refresh() {
-    console.log('[WeatherCardComponent] refresh()');
+    this.info=undefined;
+    console.log('[WeatherCardComponent] refresh()');    
     
     this.weatherInfoService.findCurrentWeather(this.location, (err, info) => {
       this.info = info;

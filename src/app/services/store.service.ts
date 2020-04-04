@@ -16,7 +16,7 @@ export class StoreService {
     let id_location = location.id;
     let index = this.locations.findIndex((location => location.id === id_location));
     let addlocation : boolean = false;
-    console.log(`REsultado de buscar si esta la cieudad ${index}`);
+    //console.log(`Resultado de buscar si esta la ciudad ${index}`);
     if (index == -1) {
       console.log('add la ciudad');
       this.locations.push(location);

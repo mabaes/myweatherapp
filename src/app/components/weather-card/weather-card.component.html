@@ -11,7 +11,11 @@
             </button>
         </div>
     </mat-card-header>
-    <mat-card-content>
+    <div class="loading">
+        <mat-progress-spinner mode="indeterminate"  *ngIf="info=='undefined'">
+        </mat-progress-spinner>
+    </div>
+    <mat-card-content>        
         <span>{{info?.temp}}ºC</span>
         <img [src]="'http://openweathermap.org/img/w/' + info?.icon + '.png'">
     </mat-card-content>

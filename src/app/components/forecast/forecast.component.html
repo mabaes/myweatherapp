@@ -4,7 +4,10 @@
     </button>
     <span>Forecast</span>
 </mat-toolbar>
-<span class="loading" *ngIf="forecast_groupby==undefined"><img [src]="'../../../assets/loading.gif'"  width="80px"></span>
+<div class="loading">
+    <mat-progress-spinner mode="indeterminate"  *ngIf="forecast_groupby==undefined">
+    </mat-progress-spinner>
+</div>
 <div *ngIf="forecast_groupby">
     <div *ngFor="let item_dias of forecast_groupby ; let i = index"> 
         <app-forecast-card  [item_forecast]="item_dias" >
@@ -13,4 +16,5 @@
 </div>
 <div *ngIf="forecast">
 </div>
+
 

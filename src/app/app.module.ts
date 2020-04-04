@@ -23,6 +23,7 @@ import { ForecastCardComponent } from './components/forecast-card/forecast-card.
 import { HttpClientModule } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { MapComponent } from './components/map/map.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { MapComponent } from './components/map/map.component';
       MatFormFieldModule,
       MatInputModule,
       MatListModule,
-      HttpClientModule
+      HttpClientModule,
+      MatProgressSpinnerModule
 
   ],
   providers: [DatePipe],

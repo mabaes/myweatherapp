@@ -16,8 +16,8 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.listalocations = this.storeService.listLocations();
-    //console.log( this.listalocations);
-    
+    console.log(`Listado :${this.listalocations}` );
+    console.log(this.listalocations.length );
   }
 
   addLocation() {

@@ -9,11 +9,13 @@
         <mat-icon>add</mat-icon>
     </button>
 </mat-toolbar>
-<div *ngIf="listalocations; else Nolista">
+<div *ngIf="listalocations && listalocations.length>0; else Nolista">
 <app-weather-card [location]="location" (removed)="removeLocation($event)"
     *ngFor="let location of listalocations"> 
 </app-weather-card>
 </div>
 <ng-template #Nolista>
-   Fallo de conexión . Vuelve a cargar por favor
+   <div class="titulo">
+        Pulsa sobre el icono + para añadir tus ciudades favoritas
+   </div>
 </ng-template>

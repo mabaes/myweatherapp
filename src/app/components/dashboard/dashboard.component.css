@@ -3,3 +3,9 @@
     flexbox row layout. */
     flex: 1 1 auto;
 }
+
+.titulo {
+    padding: 30% 10%;
+    font-size: 18px;
+    font-weight: 400;
+}
